@@ -1,0 +1,50 @@
+@import "../../common-files/common.style";
+
+.todo-container{
+        background-color: white;
+        width: 45rem;
+        height: 15rem;
+        border-radius: 1rem;
+        margin: 1rem;
+        box-shadow: 2px 1px 22px -8px rgba(77,77,77,1);
+
+        #informations{
+            display: flex;
+            height: 48%;
+            padding: 1rem;
+            font-weight: bold;
+            justify-content: space-between;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 0, 100% 27%, 56% 63%, 0% 80%, 0 0);
+        }
+
+        .material-icons.delete, .material-icons.build{
+            cursor: pointer;
+        }
+
+        h4, p{
+            padding-left: 1rem;
+        }
+    }
+
+
+
+//letterhead
+.type_1{ background-image: url("../../materials/type1.png"); color: white;}
+.type_2{ background-image: url("../../materials/triangle.png"); color: white;}
+.type_3{ background-image: url("../../materials/circle.png"); color: white;}
+
+//override
+.skillbar-bar{
+    border-radius: 2rem !important;
+}
+
+.skillbar-title span, .skillbar{ 
+    background-color: transparent !important;
+}
+
+.skillbar-percent{
+    font-size: 1.1rem !important;
+
+}

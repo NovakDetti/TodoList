@@ -1,0 +1,41 @@
+$main-blue : #E5E2FD;
+$main-grey : rgb(48, 48, 48);
+
+@mixin button-style{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+@mixin main-title{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+// stickers
+.drag-from-here{
+    border: dotted 1px grey;
+    display: flex;
+    flex-wrap: wrap;
+
+    .sticker{
+    width: 2rem;
+    height: 2rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0.3rem;
+    }
+
+    #done{
+        background-image: url("../materials/tick.png");
+    }
+
+    #question{
+        background-image: url("../materials/question.png");
+    }
+
+    #important{
+        background-image: url("../materials/alert.png");
+    }
+}

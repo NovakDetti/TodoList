@@ -1,0 +1,21 @@
+@mixin unified-parameters{
+    height: 2.4rem;
+    border-radius: 2rem;
+    border: none;
+}
+
+.searchbar-container{
+    @include unified-parameters;
+    background-color: white;
+    width: 13rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    margin: 2rem auto;
+
+    input{
+        @include unified-parameters;
+        width: 100%;
+    }
+
+}

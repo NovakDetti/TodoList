@@ -1,0 +1,18 @@
+@import "../../common-files/common.style";
+
+
+.content-container{
+    display: flex;
+}
+
+.extras-container{
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../materials/young-writer-taking-notes-in-diary-while-standing-on-terrace-4559763.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
