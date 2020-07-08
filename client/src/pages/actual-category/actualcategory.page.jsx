@@ -28,7 +28,7 @@ function ActualCategory(){
         fetchTodos(category)
         .then(res => res.json())
         .then(data => setTodoList(data))
-    }, [])
+    }, [todoList])
 
     let createAndUpdate = () => {
         createTodo(description, category, importance, letterhead);
