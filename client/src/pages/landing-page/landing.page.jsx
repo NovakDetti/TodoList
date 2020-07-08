@@ -25,16 +25,12 @@ function Landing({ fetchCategoriesX }){
 
     useEffect(() => {
         fetchCategoriesX().then(res => setCategList(res));
-    }, [])
+    }, [isActive])
     
     let addNewCategory = () => {
         if(name){
-            createCategory(name);
+            createCategory(name)
             setActive(false);
-            fetchCategories()
-            .then(data => data.json())
-            .then( res => setCategList(res))
-
         } else {
             Swal.fire("Type a name")
         }
