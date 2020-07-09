@@ -9,6 +9,7 @@ require('./db/mongoose');
 //import routes 
 const todoRoute = require('./routes/todo-route');
 const categoryRoute = require('./routes/category-route');
+const userRoute = require('./routes/user-routes');
 
 //adding cors
 let cors = require('cors');
@@ -25,7 +26,7 @@ app.use(bodyParser.json())
 // use routes
 app.use(todoRoute);
 app.use(categoryRoute);
-
+app.use(userRoute);
 
 
 app.set('port', process.env.PORT || 8000);

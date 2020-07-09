@@ -34,17 +34,3 @@
 .type_1{ background-image: url("../../materials/type1.png"); color: white;}
 .type_2{ background-image: url("../../materials/triangle.png"); color: white;}
 .type_3{ background-image: url("../../materials/circle.png"); color: white;}
-
-//override
-.skillbar-bar{
-    border-radius: 2rem !important;
-}
-
-.skillbar-title span, .skillbar{ 
-    background-color: transparent !important;
-}
-
-.skillbar-percent{
-    font-size: 1.1rem !important;
-
-}

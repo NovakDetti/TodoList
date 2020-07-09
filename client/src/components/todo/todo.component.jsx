@@ -18,7 +18,6 @@ const TodoItem = ({details}) => {
                 <span className="material-icons delete" onClick={() => deleteTodo(details.description)}>delete</span>
             </h4>
             <p>Importance : {details.importance} %</p>
-            <p>{details.status}</p>
         </div>
     )
 }

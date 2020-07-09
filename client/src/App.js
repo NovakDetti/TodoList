@@ -11,17 +11,19 @@ import Container from './components/container/container.component';
 import Landing from './pages/landing-page/landing.page';
 import ActualCategory from './pages/actual-category/actualcategory.page';
 import TodayTodos from './pages/today-todos/todaytodos.page';
+import Auth from './pages/authpage/auth.page';
 
 function App() {
   return (
     <Router>
-      <Container>
         <Switch>
-          <Route path="/" exact component={() => <Landing />} />
-          <Route path="/view/:categoryName" component={() => <ActualCategory />} />
-          <Route path="/today" component={() => <TodayTodos />} />
-        </Switch>
-      </Container>
+          <Route path="/" exact component={() => <Auth />} />
+          <Container>
+            <Route path="/categories" exact component={() => <Landing />} />
+            <Route path="/view/:categoryName" component={() => <ActualCategory />} />
+            <Route path="/today" component={() => <TodayTodos />} />
+          </Container>
+          </Switch>
     </Router>
   );
 }
