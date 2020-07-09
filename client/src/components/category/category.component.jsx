@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 // service
@@ -7,20 +7,34 @@ import { deleteCategory } from '../../service/dataservice';
 //style
 import './category.style.scss';
 
-const Category = ({ category }) => {
-    return (
-        <div className="category-container">
+class Category extends Component {
+    constructor(props) {
+        super(props);
+        this.deleteCateg = React.createRef();
+    }
+
+    deleteChoosenCategory = () => {
+        this.deleteCateg.current.style.display = "none";
+        deleteCategory(this.props.category.name)
+    }
+    
+
+    render(){
+        return (
+        <div className="category-container" ref={this.deleteCateg}>
             <div id="category-menu">
-                <h5>{category.name}</h5>
+                <h5>{this.props.category.name}</h5>
                 <div>
-                    <Link to={`/view/${category.name}`}>
-                        <span className="material-icons" >launch</span>
+                    <Link to={`/view/${this.props.category.name}`}>
+                    <span className="material-icons" >launch</span>
                     </Link>
-                    <span className="material-icons delete" onClick={() => deleteCategory(category.name)}>delete</span>
+                    <span className="material-icons delete" onClick={this.deleteChoosenCategory}>delete</span>
                 </div>
             </div>
         </div>
-    )
+        )
+    }
+    
 }
 
 
