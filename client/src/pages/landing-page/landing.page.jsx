@@ -56,28 +56,30 @@ function Landing({ fetchCategoriesX, currentUser}){
     }
     return(
         <div className="landing-container">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="material-icons">account_circle</span><p>{currentUser.email === "" ? sessionStorage.getItem("email") : currentUser.email}</p></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" onClick={logoutUser}>Logout</button>
-                    <button class="dropdown-item">Delete account</button>
+            <div id="landing-letterhead">
+                <div className="new-category-container" >
+                    <button className="create-category-button" onClick={() => setActive(!isActive)}><p>Create new category</p><span className="material-icons">add</span></button>
+                    {
+                        isActive &&
+                        <div className="create-category-form">
+                            <p>Add a category name:</p>
+                            <input type="text" placeholder="type here..." onChange={(e) => setName(e.target.value)}></input>
+                            <button onClick={addNewCategory}>Create</button>
+                        </div>
+                    }
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-icons">account_circle</span><p>{currentUser.email === "" ? sessionStorage.getItem("email") : currentUser.email}</p></button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button class="dropdown-item" onClick={logoutUser}>Logout</button>
+                        <button class="dropdown-item">Delete account</button>
+                    </div>
                 </div>
             </div>
             <div className="category-layer">
                 <h2>Categories</h2>
                 <div className="content-wrapper">
-                    <div className="new-category-container" >
-                        <button className="create-category-button" onClick={() => setActive(!isActive)}><h5>Create new category</h5><span className="material-icons">add</span></button>
-                        {
-                            isActive &&
-                            <div className="create-category-form">
-                                <p>Add a category name:</p>
-                                <input type="text" placeholder="type here..." onChange={(e) => setName(e.target.value)}></input>
-                                <button onClick={addNewCategory}>Create</button>
-                            </div>
-                        }
-                    </div>
                     {
                         categList  &&  categList.map( category => <Category key={Math.random()} category={category} />)
                     }
