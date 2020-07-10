@@ -5,6 +5,19 @@
     overflow: scroll;
     background-color: $main-grey;
 
+    #go-back{
+        width: 8rem;
+        position: absolute;
+        padding: 1rem;
+        color: white;
+        display: flex;
+        align-items: center;
+
+        a{
+            text-decoration: none;
+        }
+    }
+
     .category-details-container{
         width: 80vw;
         height: 100%;

@@ -1,15 +1,13 @@
 const default_state = {
-    categoryList : [],
-    actualCategory: "",
-    actualTodo: "",
+    email : ""
 };
 
 function actualState(state = default_state, action) {
     switch (action.type) {
-        case "UPDATE_CATEGORY":
+        case "CURRENT_USER":
             return {
                 ...state,
-                actualCategory : action.payload.name
+                email : action.payload.email
             };
 
 

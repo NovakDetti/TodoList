@@ -13,7 +13,6 @@ function createCategory(name){
 }
 
 function createTodo(description, category, importance, letterhead) {
-    console.log(letterhead)
     const response = fetch("http://localhost:8000/todo/create", {
         method: 'POST',
         mode: 'cors',

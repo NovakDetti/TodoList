@@ -1,4 +1,5 @@
 import React, { useState , useEffect} from 'react'
+import {Link} from 'react-router-dom';
 
 //style
 import './actualcategory.style.scss';
@@ -53,6 +54,7 @@ function ActualCategory(){
 
     return(
         <div className="main-container">
+            <Link to="/categories"><p id="go-back"><span class="material-icons">keyboard_backspace</span>Go back</p></Link>
             <div className="category-details-container">
                 <div id="letterhead">
                     <h3>{category}</h3>
