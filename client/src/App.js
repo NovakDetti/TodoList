@@ -13,15 +13,18 @@ import ActualCategory from './pages/actual-category/actualcategory.page';
 import TodayTodos from './pages/today-todos/todaytodos.page';
 import Auth from './pages/authpage/auth.page';
 
+//authentication
+import PrivateRoute from './privateRoute';
+
 function App() {
   return (
     <Router>
         <Switch>
           <Route path="/" exact component={() => <Auth />} />
           <Container>
-            <Route path="/categories" exact component={() => <Landing />} />
-            <Route path="/view/:categoryName" component={() => <ActualCategory />} />
-            <Route path="/today" component={() => <TodayTodos />} />
+            <PrivateRoute path="/categories" exact component={() => <Landing />} />
+            <PrivateRoute path="/view/:categoryName" component={() => <ActualCategory />} />
+            <PrivateRoute path="/today" component={() => <TodayTodos />} />
           </Container>
           </Switch>
     </Router>
