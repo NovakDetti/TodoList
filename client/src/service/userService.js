@@ -26,4 +26,19 @@ function signUpUser(user) {
     return response;
 };
 
-export { loginUser, signUpUser}
+
+function logOut(email, token) {
+    const response = fetch("http://localhost:8000/users/logout", {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "email": email, "token": token })
+    })
+    return response;
+};
+
+export { loginUser, signUpUser, logOut}

@@ -6,14 +6,29 @@ import './auth.style.scss';
 
 //user service
 import { loginUser, signUpUser } from '../../service/userService'; 
+
+//popup
 import Swal from 'sweetalert2';
 
-function Auth (){
+//redux
+import { connect } from "react-redux";
+import { current_user } from "../../redux/actions";
+
+function Auth ({current_user}){
     let[isMember, setMember] = useState(false);
     let [name, setName] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [isCorrect, setCorrect] = useState(false);
+
+
+    let loginCurrentUser = () => {
+        loginUser({ "email": email, "password": password })
+        .then(res => res.json())
+        .then( data => sessionStorage.setItem("token",data.token))
+        .then(setCorrect(true))
+        .then(current_user(email))
+    }
 
     if (isCorrect) {
         Swal.fire(`Welcome ${name}`)
@@ -36,7 +51,7 @@ function Auth (){
                             <input type="text" onChange={(e) => setEmail(e.target.value)} ></input>
                             <p>Password:</p>
                             <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
-                            <button onClick={() => loginUser({ "email": email, "password": password }).then(setCorrect(true))}>Log in</button>
+                            <button onClick={loginCurrentUser}>Log in</button>
                             <p id="change-ref" onClick={ () => setMember(false)}>Or if you have don't have an account, sign up</p>
                         </div>
                     :
@@ -48,7 +63,7 @@ function Auth (){
                             <input type="text" onChange={(e) => setEmail(e.target.value)}></input>
                             <p>Password:</p>
                             <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
-                            <button onClick={() => signUpUser({ "name": name, "email": email, "password": password }).then(setCorrect(true))}>Sign up</button>
+                            <button onClick={() => signUpUser({ "name": name, "email": email, "password": password }).then(setCorrect(true)).then(current_user(email))}>Sign up</button>
                             <p id="change-ref" onClick={() => setMember(true)}>Or if you have an account, log in</p>
                         </div>
                     
@@ -58,4 +73,10 @@ function Auth (){
     )
 }
 
-export default Auth;
+function mapDispatchToProps(dispatch) {
+    return ({
+        current_user: (email) => { dispatch(current_user(email)) }
+    })
+}
+
+export default connect(null, mapDispatchToProps)(Auth);

@@ -8,12 +8,24 @@
     display: flex;
     background-color: $main-grey;
 
+    #dropdownMenuButton{
+        display: flex;
+        justify-content: space-between;
+        background-color: transparent;
+        border: none;
+
+        p{
+            margin-left: 1rem;
+        }
+    }
+
+
     .category-layer{
         width: 100%;
         height: 100vh;
 
         .new-category-container{
-            background-color: #ffd987;
+            background-color: #dea83d;
             border-radius: 1rem;
             width: 40rem;
             height: 15rem;
@@ -43,7 +55,7 @@
                     text-align: center;
                     border : none;
                     border-bottom: 1px solid $main-grey;
-                    background-color: #ffd987;
+                    background-color: transparent;
                 }
 
                 button{

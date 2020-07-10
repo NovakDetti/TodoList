@@ -46,7 +46,6 @@ userSchema.methods.toJSON = function () {
 };
 
 userSchema.methods.generateToken = async function () {
-    console.log("halo")
     const token = jwt.sign(
         { _id: this._id.toString() },
         "hibefvuhilknfbvhb",
@@ -54,7 +53,6 @@ userSchema.methods.generateToken = async function () {
             expiresIn: '24h'
         }
     );
-    console.log("token",token)
     this.tokens = this.tokens.concat({ token });
     await this.save();
     return token;
