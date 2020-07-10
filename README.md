@@ -1,5 +1,8 @@
 # TodoList
 
-<img width="600px" height="300px" src="https://user-images.githubusercontent.com/54432325/86456246-12319b00-bd22-11ea-868f-e5baf8ade8c9.png">
+Home screen
+<img width="600px" height="300px" src="https://user-images.githubusercontent.com/54432325/87152941-e92b8000-c2b6-11ea-894a-b62d5b2114ff.png">
 
-<img width="600px" height="300px" src="https://user-images.githubusercontent.com/54432325/86456288-1f4e8a00-bd22-11ea-9686-b00c451cab49.png">
+<img width="600px" height="300px" src="https://user-images.githubusercontent.com/54432325/87153032-0f512000-c2b7-11ea-9929-a0e13dddd00f.png">
+
+<img width="600px" height="300px" src="https://user-images.githubusercontent.com/54432325/87153085-2bed5800-c2b7-11ea-8500-3c5efbca87d3.png">
