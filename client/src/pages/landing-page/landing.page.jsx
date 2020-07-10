@@ -31,7 +31,7 @@ function Landing({ fetchCategoriesX, currentUser}){
             sessionStorage.setItem("email", currentUser.email)
         } 
         fetchCategoriesX().then(res => setCategList(res));
-    }, [isActive])
+    }, [isActive, currentUser.email, fetchCategoriesX])
     
     let addNewCategory = () => {
         if(name){
