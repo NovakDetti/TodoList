@@ -35,7 +35,7 @@ function Landing({ fetchCategoriesX, currentUser}){
     
     let addNewCategory = () => {
         if(name){
-            createCategory(name)
+            createCategory(name, currentUser.email !== "" ? currentUser.email : sessionStorage.getItem("email"))
             setActive(false);
         } else {
             Swal.fire("Type a name")
