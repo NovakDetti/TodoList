@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const Category = require('../model/Category');
+const User = require('../model/User');
+const auth = require('../middleware/auth');
 
 // CREATE
-router.post("/category/create", async (req, res) => {  
+router.post("/category/create", auth, async (req, res) => {  
     try {
         const isExist = await Category.find({ name: req.body.name });
         if (isExist.length === 0) {
@@ -18,10 +20,14 @@ router.post("/category/create", async (req, res) => {
 })
 
 // READ
-router.get("/category/all", async (req, res) => {
+router.post("/category/all", auth, async (req, res) => {
     try {
-        const categories = await Category.find();
-        res.status(200).send(categories);
+        await req.user
+            .populate({
+                path: 'categories'
+            })
+            .execPopulate();
+        res.status(200).send(req.user.categories);
     } catch (error) {
         res.status(500).send(error);
     }

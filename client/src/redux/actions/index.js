@@ -1,13 +1,14 @@
 export function fetchCategoriesX() {
     return async function (dispatch) {
         return fetch("http://localhost:8000/category/all", {
-            method: 'GET',
+            method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
             credentials: 'same-origin',
             headers: {
-                'Content-Type': 'application/json'
-            },
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+            }
         })
             .then( data  => data.json())
     };

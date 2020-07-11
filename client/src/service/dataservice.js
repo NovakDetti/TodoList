@@ -1,30 +1,33 @@
 // Category services
 
 // CREATE 
-function createCategory(name){
+function createCategory(name, owner){
     const response = fetch("http://localhost:8000/category/create", {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
-        body: JSON.stringify({"name" : name})
+        body: JSON.stringify({"name" : name, "owner" : owner })
     })
     return response;
 }
 
 // READ
-function fetchCategories() {
+function fetchCategories(email) {
     const response = fetch("http://localhost:8000/category/all", {
-        method: 'GET',
+        method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
+        body: JSON.stringify({ "email": email})
     })
     return response;
 };
@@ -38,7 +41,8 @@ function deleteCategory(name) {
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
         body: JSON.stringify({ "name": name })
     })
@@ -55,7 +59,8 @@ function createTodo(description, category, importance, letterhead) {
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
         body: JSON.stringify({
              "description": description, 
@@ -74,7 +79,8 @@ function todayTodos(category) {
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
         body: JSON.stringify({ "category": category })
     })
@@ -88,7 +94,8 @@ function monthTodos(category) {
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
         body: JSON.stringify({ "category": category })
     })
@@ -103,7 +110,8 @@ function fetchTodos(category) {
             cache: 'no-cache',
             credentials: 'same-origin',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
             },
             body: JSON.stringify({ "category": category })
         })
@@ -119,7 +127,8 @@ function deleteTodo(description) {
         cache: 'no-cache',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
         },
         body: JSON.stringify({ "description": description })
     })

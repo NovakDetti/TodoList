@@ -8,7 +8,12 @@ const categorySchema = new mongoose.Schema(
         name : {
             type: String,
             required : true
-        }
+        },
+        owner: {
+            type: String,
+            required: true,
+            ref: 'User'
+        },
     }
 );
 

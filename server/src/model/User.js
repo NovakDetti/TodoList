@@ -38,6 +38,12 @@ const userSchema = new mongoose.Schema(
     }
 );
 
+userSchema.virtual('categories', {
+    ref: 'Category',
+    localField: 'email',
+    foreignField: 'owner'
+});
+
 userSchema.methods.toJSON = function () {
     const userObject = this.toObject();
     delete userObject.password;
