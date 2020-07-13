@@ -18,9 +18,6 @@ import { fetchTodos, todayTodos, monthTodos } from '../../service/dataservice';
 function ActualCategory(){
     let[isActive, setActive] = useState(false);
     const[todoList, setTodoList] = useState();
-    let[description, setDescription] = useState("")
-    let[letterhead, setLetterhead] = useState("")
-    let[importance, setImportance] = useState(0)
     const category = window.location.pathname.split('/')[2];
 
     useEffect(() => {

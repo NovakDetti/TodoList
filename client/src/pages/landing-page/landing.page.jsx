@@ -6,24 +6,19 @@ import "./landing.style.scss";
 
 // components
 import Category from '../../components/category/category.component';
+import CategoryCreator from '../../components/category-creator/category.creator.component';
 
 //redux
 import { connect } from "react-redux";
 import { fetchCategoriesX } from '../../redux/actions/index';
 
 //service 
-import { createCategory} from '../../service/dataservice';
 import { logOut } from '../../service/userService';
-
-// pop up message
-import Swal from 'sweetalert2'
-
 
 
 function Landing({ fetchCategoriesX, currentUser}){
     const [categList , setCategList] = useState();
     const [isActive, setActive] = useState(false);
-    const [name, setName] = useState(false);
     const [isLoggedOut, setLoggedOut] = useState(false);
 
     useEffect(() => {
@@ -32,15 +27,6 @@ function Landing({ fetchCategoriesX, currentUser}){
         } 
         fetchCategoriesX().then(res => setCategList(res));
     }, [isActive, currentUser.email, fetchCategoriesX])
-    
-    let addNewCategory = () => {
-        if(name){
-            createCategory(name, currentUser.email !== "" ? currentUser.email : sessionStorage.getItem("email"))
-            setActive(false);
-        } else {
-            Swal.fire("Type a name")
-        }
-    }
 
     let logoutUser = () => {
         logOut(currentUser.email !== "" ? currentUser.email : sessionStorage.getItem("email"), sessionStorage.getItem("token"));
@@ -61,11 +47,7 @@ function Landing({ fetchCategoriesX, currentUser}){
                     <button className="create-category-button" onClick={() => setActive(!isActive)}><p>Create new category</p><span className="material-icons">add</span></button>
                     {
                         isActive &&
-                        <div className="create-category-form">
-                            <p>Add a category name:</p>
-                            <input type="text" placeholder="type here..." onChange={(e) => setName(e.target.value)}></input>
-                            <button onClick={addNewCategory}>Create</button>
-                        </div>
+                        <CategoryCreator email={currentUser.email !== "" ? currentUser.email : sessionStorage.getItem("email")}/>
                     }
                 </div>
                 <div class="dropdown">
