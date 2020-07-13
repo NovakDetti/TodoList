@@ -1,5 +1,5 @@
-function loginUser(user) {
-    const response = fetch("http://localhost:8000/users/login", {
+async function loginUser(user) {
+    const response = await fetch("http://localhost:8000/users/login", {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -12,8 +12,8 @@ function loginUser(user) {
     return response;
 };
 
-function signUpUser(user) {
-    const response = fetch("http://localhost:8000/users/signup", {
+async function signUpUser(user) {
+    const response = await fetch("http://localhost:8000/users/signup", {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -27,8 +27,8 @@ function signUpUser(user) {
 };
 
 
-function logOut(email, token) {
-    const response = fetch("http://localhost:8000/users/logout", {
+async function logOut(email, token) {
+    const response = await fetch("http://localhost:8000/users/logout", {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',

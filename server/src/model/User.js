@@ -31,9 +31,12 @@ const userSchema = new mongoose.Schema(
             type: Date,
             required: true,
             validate(value) {
-                if (!value.isAfter("13-07-2002")) {
-                    throw new Error('Invalid date!');
-                }
+                let minimumAge = 18;
+                let now = new Date();
+                let age = now.getFullYear() - value.getFullYear();
+                if (age < minimumAge){
+                    throw new Error('You must be over 18!');
+                }  
             }
         },
         tokens: [

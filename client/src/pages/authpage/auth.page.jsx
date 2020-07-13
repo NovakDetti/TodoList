@@ -31,6 +31,16 @@ function Auth ({current_user}){
         .then(current_user(email))
     }
 
+    let userRegistration = () => {
+        signUpUser({ "name": name, "email": email, "password": password, "birthday": String(birthday) })
+        .then(res => res.status !== 400 ?
+            (setCorrect(true),
+            current_user(email))
+            :
+            Swal.fire("Wrong credentials")
+        )
+    }
+
     if (isCorrect) {
         Swal.fire(`Welcome ${name}`)
         return <Redirect to={{
@@ -66,7 +76,7 @@ function Auth ({current_user}){
                             <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
                             <p>Birthday:</p>
                             <input type="date" onChange={(e) => setBirthday(e.target.value)}></input>
-                            <button onClick={() => signUpUser({ "name": name, "email": email, "password": password , "birthday" : birthday}).then(setCorrect(true)).then(current_user(email))}>Sign up</button>
+                            <button onClick={userRegistration}>Sign up</button>
                             <p id="change-ref" onClick={() => setMember(true)}>Or if you have an account, log in</p>
                         </div>
                     
