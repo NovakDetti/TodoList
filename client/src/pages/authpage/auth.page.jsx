@@ -34,11 +34,10 @@ function Auth ({current_user}){
     let userRegistration = () => {
         signUpUser({ "name": name, "email": email, "password": password, "birthday": String(birthday) })
         .then(res => res.status !== 400 ?
-            (setCorrect(true),
-            current_user(email))
+            setCorrect(true)
             :
             Swal.fire("Wrong credentials")
-        )
+        ).then(current_user(email))
     }
 
     if (isCorrect) {

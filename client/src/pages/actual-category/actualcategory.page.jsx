@@ -6,15 +6,13 @@ import './actualcategory.style.scss';
 
 //components
 import TodoItem from '../../components/todo/todo.component';
+import TodoCreator from '../../components/todo-creator/todo.creator.component';
 
 //redux
 import { connect } from "react-redux";
 
 // service
-import { createTodo, fetchTodos, todayTodos, monthTodos } from '../../service/dataservice';
-
-// pop up message
-import Swal from 'sweetalert2'
+import { fetchTodos, todayTodos, monthTodos } from '../../service/dataservice';
 
 
 function ActualCategory(){
@@ -30,15 +28,6 @@ function ActualCategory(){
         .then(res => res.json())
         .then(data => setTodoList(data))
     }, [todoList, category])
-
-    let createAndUpdate = () => {
-        createTodo(description, category, importance, letterhead);
-        setActive(false);
-        fetchTodos(category)
-            .then(res => res.json())
-            .then(data => setTodoList(data))
-        Swal.fire("Todo created")
-    }
 
     let changeTodayTodos = () => {
         todayTodos(category)
@@ -73,39 +62,7 @@ function ActualCategory(){
                     <div>
                         {
                             isActive &&
-                            <div className="todo-creator-container">
-                                <h4>Details</h4>
-                                <p>Description:</p>
-                                <input type="text" placeholder="type here..." onChange={(e) => setDescription(e.target.value)}></input>
-                                <p>Letterhead:</p>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Types</button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <div class="dropdown-item letterhead-design" id="type_1" onClick={() => setLetterhead("type_1")}></div>
-                                        <div class="dropdown-item letterhead-design" id="type_2" onClick={() => setLetterhead("type_2")}></div>
-                                        <div class="dropdown-item letterhead-design" id="type_3" onClick={() => setLetterhead("type_3")}></div>
-                                    </div>
-                                </div>
-                                <p>Importance</p>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Choose a number</button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>10</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>20</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>30</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>40</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>50</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>60</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>70</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>80</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>90</div>
-                                        <div class="dropdown-item imp-div" onClick={(e) => setImportance(e.currentTarget.textContent)}>100</div>
-                                    </div>
-                                </div>
-                            <button className="create-todo-button" onClick={createAndUpdate}>Create</button>
-                            </div>
+                            <TodoCreator />
                         }
                     </div>
             </div>
