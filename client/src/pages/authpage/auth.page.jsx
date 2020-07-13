@@ -19,6 +19,7 @@ function Auth ({current_user}){
     let [name, setName] = useState("");
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
+    let [birthday, setBirthday] = useState("");
     let [isCorrect, setCorrect] = useState(false);
 
 
@@ -63,7 +64,9 @@ function Auth ({current_user}){
                             <input type="text" onChange={(e) => setEmail(e.target.value)}></input>
                             <p>Password:</p>
                             <input type="password" onChange={(e) => setPassword(e.target.value)}></input>
-                            <button onClick={() => signUpUser({ "name": name, "email": email, "password": password }).then(setCorrect(true)).then(current_user(email))}>Sign up</button>
+                            <p>Birthday:</p>
+                            <input type="date" onChange={(e) => setBirthday(e.target.value)}></input>
+                            <button onClick={() => signUpUser({ "name": name, "email": email, "password": password , "birthday" : birthday}).then(setCorrect(true)).then(current_user(email))}>Sign up</button>
                             <p id="change-ref" onClick={() => setMember(true)}>Or if you have an account, log in</p>
                         </div>
                     

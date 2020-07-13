@@ -27,6 +27,15 @@ const userSchema = new mongoose.Schema(
             trim: true,
             minlength: 6
         },
+        birthday: {
+            type: Date,
+            required: true,
+            validate(value) {
+                if (!value.isAfter("13-07-2002")) {
+                    throw new Error('Invalid date!');
+                }
+            }
+        },
         tokens: [
             {
                 token: {
