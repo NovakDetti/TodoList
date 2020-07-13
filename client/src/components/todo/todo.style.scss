@@ -10,7 +10,7 @@
 
         #informations{
             display: flex;
-            height: 48%;
+            height: 52%;
             padding: 1rem;
             font-weight: bold;
             justify-content: space-between;
@@ -25,7 +25,30 @@
 
         h4, p{
             padding-left: 1rem;
+            color: rgb(41, 41, 41);
         }
+
+        .material-icons.build{
+            margin-left: 1rem;
+        }
+
+        .material-icons.delete, .material-icons.build {
+            color: $main-yellow;
+        }
+
+        .importance-container{
+            display: flex;
+            
+            .importance-bar{
+                height: 2rem;
+                background-color: $main-yellow;
+                margin-left: 2vw;
+                border-radius: 1rem;
+                padding: 0.3rem;
+            }
+        }
+
+        
     }
 
 

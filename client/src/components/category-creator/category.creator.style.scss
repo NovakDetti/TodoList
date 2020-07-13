@@ -1,3 +1,5 @@
+@import "../../common-files/common.style";
+
 .create-category-form{
     position: absolute;
     top: 3rem;
@@ -10,7 +12,7 @@
     z-index: 100;
 
     button{
-        background-color: #dea83d;
+        background-color: $main-yellow;
         color: white;
         border-radius: 1rem;
         margin-top: 1rem;
